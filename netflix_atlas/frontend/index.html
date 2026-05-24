@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Atlas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Netflix Analytics Workspace</p>
+                <h1>Streaming intelligence, powered by ML clustering.</h1>
+                <p class="hero-text">
+                    Explore 8 000+ titles, inspect trends, and discover content through
+                    TF-IDF content-based recommendations built on the Netflix catalog.
+                </p>
+            </div>
+            <div class="hero-panel">
+                <div class="hero-card">
+                    <span>API Status</span>
+                    <strong id="api-status">Checking…</strong>
+                </div>
+                <div class="hero-card">
+                    <span>Dataset</span>
+                    <strong id="record-count">Loading…</strong>
+                </div>
+            </div>
+        </header>
+
+        <section class="stats-grid" id="stats-grid" aria-label="Catalog statistics"></section>
+
+        <section class="control-panel" aria-label="Search and filter">
+            <div class="control-header">
+                <h2>Catalog Explorer</h2>
+                <p>Search across titles, genres, cast, countries, and descriptions.</p>
+            </div>
+            <div class="filters" role="search">
+                <input id="search-input"  type="search" placeholder="Title, genre, cast, description…" aria-label="Full-text search">
+                <select id="type-filter" aria-label="Content type">
+                    <option value="">All types</option>
+                    <option value="Movie">Movie</option>
+                    <option value="TV Show">TV Show</option>
+                </select>
+                <input id="country-filter" type="text" placeholder="Country…"   aria-label="Filter by country">
+                <input id="genre-filter"   type="text" placeholder="Genre…"     aria-label="Filter by genre">
+                <button id="search-btn" aria-label="Apply filters">Search</button>
+            </div>
+        </section>
+
+        <main class="content-grid">
+            <div class="catalog-panel">
+                <div class="section-title-row">
+                    <h2>Titles</h2>
+                    <span id="results-meta" aria-live="polite">Loading…</span>
+                </div>
+                <div id="catalog-grid" class="catalog-grid" role="list"></div>
+                <div class="pager" role="navigation" aria-label="Catalog pagination">
+                    <button id="prev-page" aria-label="Previous page">← Previous</button>
+                    <span id="page-label" aria-live="polite">Page 1</span>
+                    <button id="next-page" aria-label="Next page">Next →</button>
+                </div>
+            </div>
+
+            <aside class="details-panel" aria-label="Title details and recommendations">
+                <div class="section-title-row"><h2>Title Details</h2></div>
+                <div id="details-card" class="details-card">
+                    <p class="placeholder-text">Select a title card to view metadata and recommendations.</p>
+                </div>
+                <div class="section-title-row" style="margin-top:24px"><h2>Recommendations</h2></div>
+                <div id="recommendations" class="recommendations" aria-live="polite">
+                    <p class="placeholder-text">Recommendations appear after selecting a title.</p>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
